@@ -1,0 +1,27 @@
+# PDF
+*.pdf
+
+# Qdrant ローカルストレージ
+qdrant_storage/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+
+# uv / パッケージング
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Gradio
+.gradio/
+
+# 環境変数
+.env
+.env.*
+
+# macOS
+.DS_Store
