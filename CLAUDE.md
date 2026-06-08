@@ -106,7 +106,7 @@ __pycache__/
 
 ## 注意事項
 
-- Ollama は起動済みである前提（`ollama serve` が動いていること）
+- Ollama は起動済みである前提（メニューバーの ollama アプリが起動していること）
 - モデルが未取得の場合は `ollama pull qwen3:14b` と `ollama pull qwen3-embedding:0.6b` を先に実行
 - `qwen3-embedding:0.6b` のベクトル次元数は **1024**。Qdrant コレクション作成時に `size=1024` を指定する
 - `langchain-qdrant` は `langchain-community` の Qdrant 統合とは別パッケージなので注意
