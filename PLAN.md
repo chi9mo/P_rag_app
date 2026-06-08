@@ -24,13 +24,13 @@
 
 ### タスク
 
-- [ ] `src/rag_app/` ディレクトリを作成する
-- [ ] `src/rag_app/__init__.py` を作成する（空ファイル）
-- [ ] `src/rag_app/indexer.py` を作成する（空ファイル）
-- [ ] `src/rag_app/chain.py` を作成する（空ファイル）
-- [ ] `src/rag_app/app.py` を作成する（空ファイル）
-- [ ] `.gitignore` に `qdrant_storage/`, `.venv/`, `__pycache__/`, `*.pyc`, `guideline.pdf` が含まれていることを確認する
-- [ ] `pyproject.toml` に `[tool.uv] package = true` または src レイアウト用の設定が必要か確認する
+- [x] `src/rag_app/` ディレクトリを作成する
+- [x] `src/rag_app/__init__.py` を作成する（空ファイル）
+- [x] `src/rag_app/indexer.py` を作成する（空ファイル）
+- [x] `src/rag_app/chain.py` を作成する（空ファイル）
+- [x] `src/rag_app/app.py` を作成する（空ファイル）
+- [x] `.gitignore` に `qdrant_storage/`, `.venv/`, `__pycache__/`, `*.pyc`, `guideline.pdf` が含まれていることを確認する
+- [x] `pyproject.toml` に src レイアウト用の設定を追加する（hatchling + `[tool.hatch.build.targets.wheel]`）
 
 ---
 
@@ -43,19 +43,21 @@
 
 ### タスク
 
-- [ ] pdfplumber で PDF を読み込み、ページ単位でテキストを抽出する
+- [x] pdfplumber で PDF を読み込み、ページ単位でテキストを抽出する
   - `page.page_number` を `metadata["page"]` として Document に格納
-- [ ] `RecursiveCharacterTextSplitter` でチャンク分割する
+- [x] `RecursiveCharacterTextSplitter` でチャンク分割する
   - `chunk_size=500`, `chunk_overlap=50`
-- [ ] `OllamaEmbeddings(model="qwen3-embedding:0.6b")` を初期化する
-- [ ] `QdrantClient(path="./qdrant_storage")` を初期化する
-- [ ] Qdrant コレクション `"guideline"` を作成する
+- [x] `OllamaEmbeddings(model="qwen3-embedding:0.6b")` を初期化する
+- [x] `QdrantClient(path="./qdrant_storage")` を初期化する
+- [x] Qdrant コレクション `"guideline"` を作成する
   - ベクトル次元数: `size=1024`
-- [ ] `QdrantVectorStore` にチャンクを投入する
-- [ ] 起動時判定ロジックを実装する
-  - `qdrant_storage/` が存在し、コレクションが存在すればスキップ
-  - 存在しなければ構築を実行
-- [ ] `build_index()` と `load_vectorstore()` を関数として整理する
+- [x] `QdrantVectorStore` にチャンクを投入する
+- [x] 起動時判定ロジックを実装する
+  - コレクションが存在すればスキップ、存在しなければ構築を実行
+- [x] `build_index()` を関数として整理する（1722 チャンク構築確認済み）
+- [x] `langchain-text-splitters` を依存に追加（langchain 1.x で分離されたため）
+
+- [x] Phase 2 完了: 単体で `build_index()` を実行してインデックス構築を確認済み
 
 ---
 
@@ -68,16 +70,18 @@ Retriever と LLM を繋ぎ、ストリーミングで回答を返す。
 
 ### タスク
 
-- [ ] `ChatOllama(model="qwen3:14b", streaming=True)` を初期化する
-- [ ] Retriever を設定する
+- [x] `ChatOllama(model="qwen3:14b", streaming=True)` を初期化する
+- [x] Retriever を設定する
   - `vectorstore.as_retriever(search_kwargs={"k": 4})`
-- [ ] システムプロンプトを実装する
+- [x] システムプロンプトを実装する
   - 日本語で回答するよう指示
   - 提供されたコンテキストのみを根拠に回答させる
   - コンテキストに情報がない場合は「資料に記載がありません」と答えさせる
-- [ ] 会話履歴（messages リスト）を受け取り、RAG 検索 + LLM 呼び出しを行う関数を実装する
-- [ ] ストリーミングトークンを `yield` で返す実装にする
-- [ ] `source_documents` から `metadata["page"]` と `page_content` を取り出して返す
+- [x] 会話履歴（messages リスト）を受け取り、RAG 検索 + LLM 呼び出しを行う関数を実装する
+- [x] ストリーミングトークンを `yield` で返す実装にする
+- [x] `source_documents` から `metadata["page"]` と `page_content` を取り出して返す
+
+- [x] Phase 3 完了: Gradio なしで `ask()` を呼び出し、ストリーミング回答・出典取得を確認済み
 
 ---
 
