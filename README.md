@@ -30,15 +30,15 @@ AI・LLM の学習として RAG（Retrieval-Augmented Generation）を実装す�
 
 ## 技術スタック
 
-| 役割 | 技術 |
-|---|---|
-| LLM | Ollama (`qwen3:14b`) — ローカル実行・API キー不要 |
-| Embedding | Ollama (`qwen3-embedding:0.6b`) |
-| ベクトル DB | Qdrant（ローカルストレージモード） |
-| RAG フレームワーク | LangChain |
-| PDF 解析 | pdfplumber |
-| UI | Gradio |
-| パッケージ管理 | uv |
+| 役割 | 技術 | コメント |
+|---|---|---|
+| LLM | Ollama (`qwen3:14b`) — ローカル実行・API キー不要 | M5 ユニファイドメモリ32Gでスワップが1Gほど発生した。 |
+| Embedding | Ollama (`qwen3-embedding:0.6b`) | まずは小さいもので実装。精度Up Phaseで調整予定 |
+| ベクトル DB | Qdrant（ローカルストレージモード） | Docker不要でも実行可能 |
+| RAG フレームワーク | LangChain |  |
+| PDF 解析 | pdfplumber |  |
+| UI | Gradio |  |
+| パッケージ管理 | uv |  |
 
 すべてローカルで完結しており、外部 API やクラウドサービスへの依存はありません。
 
