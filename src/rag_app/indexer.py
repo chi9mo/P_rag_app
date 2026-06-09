@@ -9,9 +9,9 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams
 
 BASE_DIR = Path(__file__).resolve().parents[2]
-PDF_PATH = BASE_DIR / "guideline.pdf"
+PDF_PATH = BASE_DIR / "medicine-package-insert.pdf"
 QDRANT_PATH = str(BASE_DIR / "qdrant_storage")
-COLLECTION_NAME = "guideline"
+COLLECTION_NAME = "medicine"
 EMBEDDING_MODEL = "qwen3-embedding:0.6b"
 VECTOR_SIZE = 1024
 

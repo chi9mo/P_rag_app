@@ -38,7 +38,7 @@
 
 ### 役割
 
-`guideline.pdf` を読み込み、チャンクに分割して Qdrant に投入する。
+`medicine-package-insert.pdf` を読み込み、チャンクに分割して Qdrant に投入する。
 アプリ起動時に呼び出され、`qdrant_storage/` が存在する場合はスキップする。
 
 ### タスク
@@ -49,12 +49,12 @@
   - `chunk_size=500`, `chunk_overlap=50`
 - [x] `OllamaEmbeddings(model="qwen3-embedding:0.6b")` を初期化する
 - [x] `QdrantClient(path="./qdrant_storage")` を初期化する
-- [x] Qdrant コレクション `"guideline"` を作成する
+- [x] Qdrant コレクション `"medicine"` を作成する
   - ベクトル次元数: `size=1024`
 - [x] `QdrantVectorStore` にチャンクを投入する
 - [x] 起動時判定ロジックを実装する
   - コレクションが存在すればスキップ、存在しなければ構築を実行
-- [x] `build_index()` を関数として整理する（1722 チャンク構築確認済み）
+- [x] `build_index()` を関数として整理する
 - [x] `langchain-text-splitters` を依存に追加（langchain 1.x で分離されたため）
 
 - [x] Phase 2 完了: 単体で `build_index()` を実行してインデックス構築を確認済み
@@ -115,7 +115,7 @@ Retriever と LLM を繋ぎ、ストリーミングで回答を返す。
 - [ ] 質問を入力してストリーミングで回答が返ることを確認する
 - [ ] 出典（ページ番号・引用テキスト）が表示されることを確認する
 - [ ] リセットボタンで会話履歴がクリアされることを確認する
-- [ ] `guideline.pdf` に記載のない質問に対して「資料に記載がありません」と返ることを確認する
+- [ ] `medicine-package-insert.pdf` に記載のない質問に対して「資料に記載がありません」と返ることを確認する
 
 ---
 

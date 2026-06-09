@@ -2,7 +2,7 @@
 
 ## 概要
 
-`guideline.pdf` の内容を知識源として、ユーザーの質問に日本語で回答する RAG ベースの GUI チャットアプリ。
+`medicine-package-insert.pdf` の内容を知識源として、ユーザーの質問に日本語で回答する RAG ベースの GUI チャットアプリ。
 
 ---
 
@@ -12,7 +12,7 @@
 
 | 項目 | 仕様 |
 |---|---|
-| データソース | `guideline.pdf`（日本語、リポジトリルートに配置） |
+| データソース | `medicine-package-insert.pdf`（日本語、リポジトリルートに配置） |
 | インデックス構築 | アプリ起動時に1回のみ実行。`qdrant_storage/` が存在する場合はスキップ |
 | 検索戦略 | ベクトル類似検索（シンプル実装。将来的に Hybrid 検索へ拡張余地あり） |
 | 検索件数（top-k） | 4件（デフォルト） |
@@ -58,7 +58,7 @@
 
 ```
 P_rag_app/
-├── guideline.pdf           # 知識源 PDF
+├── medicine-package-insert.pdf  # 知識源 PDF
 ├── pyproject.toml
 ├── .gitignore
 ├── SPEC.md                 # 本ファイル

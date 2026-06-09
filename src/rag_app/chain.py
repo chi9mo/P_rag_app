@@ -6,6 +6,7 @@ from langchain_qdrant import QdrantVectorStore
 
 LLM_MODEL = "qwen3:14b"
 
+# RAG精度評価のための、シンプルなプロンプト。
 SYSTEM_PROMPT_TEMPLATE = """\
 あなたは資料に基づいて質問に答えるアシスタントです。
 以下のコンテキストのみを根拠に、日本語で回答してください。
@@ -13,6 +14,17 @@ SYSTEM_PROMPT_TEMPLATE = """\
 
 コンテキスト:
 {context}"""
+
+# # 実際に使う時用のプロンプト⇩
+# SYSTEM_PROMPT_TEMPLATE = """\
+# あなたは医薬品の専門アシスタントです。
+# 以下のコンテキストを根拠に、患者や医療従事者が理解しやすいよう\
+# 自分の言葉でわかりやすく日本語で説明してください。
+# 箇条書きや見出しを使って整理し、難しい用語は噛み砕いて補足してください。
+# コンテキストに情報がない場合は「資料に記載がありません」と答えてください。
+
+# コンテキスト:
+# {context}"""
 
 llm = ChatOllama(model=LLM_MODEL, streaming=True)
 

@@ -2,7 +2,7 @@
 
 ## プロジェクト概要
 
-`guideline.pdf`（日本語）を知識源とした RAG チャットアプリ。
+`medicine-package-insert.pdf`（日本語）を知識源とした RAG チャットアプリ。
 詳細仕様は `SPEC.md` を参照。
 
 ---
@@ -36,7 +36,7 @@ embeddings = OllamaEmbeddings(model="qwen3-embedding:0.6b")
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
 client = QdrantClient(path="./qdrant_storage")
-# コレクション名: "guideline"
+# コレクション名: "medicine"
 ```
 
 **起動時の判定ロジック:**
